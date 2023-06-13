@@ -1,0 +1,64 @@
+testbed:
+  name: LTROPS-2711 Topology
+  alias: LTROPS-2711
+  credentials:
+    default:
+      username: admin
+      password: cisco.123
+devices:
+  CSR1Kv-01:
+    alias: csr1kv
+    type: router
+    os: iosxe
+    platform: csr1000v
+    connections:
+      defaults:
+        via: ssh
+      ssh:
+        protocol: ssh
+        ip: 10.15.101.11
+  C8Kv-01:
+    alias: c8kv
+    type: switch
+    os: iosxe
+    platform: cat8k
+    connections:
+      defaults:
+        via: ssh
+      ssh:
+        protocol: ssh
+        ip: 10.15.101.12
+  XR9Kv-01:
+    alias: xrv
+    type: router
+    os: iosxr
+    platform: iosxrv9k
+    connections:
+      defaults:
+        via: ssh
+      ssh:
+        protocol: ssh
+        ip: 10.15.101.13
+      netconf:
+        class: yang.connector.Netconf
+        ip: 10.15.101.13
+        port: 830
+  N9Kv-01:
+    alias: n9kv
+    type: switch
+    os: nxos
+    platform: n9k
+    connections:
+      defaults:
+        via: ssh
+      ssh:
+        protocol: ssh
+        ip: 10.15.101.14
+      rest:
+        class: rest.connector.Rest
+        protocol: https
+        ip: 10.15.101.14
+      netconf:
+        class: yang.connector.Netconf
+        ip: 10.15.101.14
+        port: 830
